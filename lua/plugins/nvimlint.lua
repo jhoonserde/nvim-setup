@@ -20,8 +20,23 @@ return {
             end,
         })
 
-        vim.keymap.set("n", "<leader>ll", function()
-            lint.try_lint()
-        end, { desc = "Trigger linting for the current file" })
+        vim.keymap.set("n", "<leader>tl", lint.try_lint, {
+            desc = "Trigger linting for the current file" })
+
+        vim.keymap.set("n", "<leader>ll", vim.diagnostic.setloclist, { 
+            desc = "Location list diagnostic" })
+
+        vim.keymap.set("n", "<leader>ql", vim.diagnostic.setqflist, { 
+            desc = "QuickFix list diagnostic" })
+        
+        vim.keymap.set("n", "<leader>dl", vim.diagnostic.open_float, { 
+            desc = "Diagnostic line" })
+        
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { 
+            desc = "Go to next diagnostic" })
+    
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { 
+            desc = "Go to previous diagnostic" })
+
     end,
 }
